@@ -52,6 +52,8 @@ class Main(Frame):
         self.cont9.v = Frame(master)
         self.cont9.v.pack()
         
+        cons = [self.cont2, self.cont3, self.cont4, self.cont5, self.cont6, self.cont7, self.cont8, self.cont9]
+        
         #container para o botao submeter
         self.contPU = Frame(master)
         self.contPU["pady"] = 30
@@ -281,16 +283,24 @@ class Main(Frame):
         self.sub["width"] = 10
         self.sub.pack(side=BOTTOM)
         
+        #espaço para resultado
+        self.mr = Label(self.contU, text="Resultado: ")
+        self.mr["font"] = ("Arial", 16, "bold")
+        self.mr["padx"] = 400
+        self.mr.pack(side=LEFT)
+        
         #botao ultimo - sair
         self.sair = Button(self.contU)
         self.sair["text"] = "Sair"
         self.sair["font"] = ("Arial", 10)
         self.sair["width"] = 5
+        self.sair["padx"] = 20
         self.sair["command"] = self.contU.quit
-        self.sair.pack(side=BOTTOM)
+        self.sair.pack(side=RIGHT)
 
 myApp = Main()
 
 myApp.master.title("Resolvedor de Funções")
+myApp.master.resizable(True, True)
 
 myApp.mainloop()
