@@ -1,8 +1,11 @@
 from tkinter import *
 from special_char import *
 
-class Main:
+class Main(Frame):
     def __init__(self, master=None):
+        super().__init__(master)
+        self.pack()
+        
         #container para o titulo e a petição
         self.cont1 = Frame(master)
         self.cont1["pady"] = 20
@@ -62,13 +65,19 @@ class Main:
         #definindo o titulo
         self.titulo = Label(self.cont1, text="Resolvedor de funções 2000")
         self.titulo["font"] = ("Arial", 18, "bold")
-        self.titulo["pady"] = 10
+        self.titulo["pady"] = 20
         self.titulo.pack()
         
         #definindo a mensagem
-        self.msg = Label(self.cont1, text="Escolha a equação a qual deseja calcular!")
+        self.msg = Label(self.cont1, text="Escolha a equação a qual deseja resolver!")
         self.msg["font"] = ("Arial", 12, "italic")
+        self.msg["pady"] = 10
         self.msg.pack()
+        
+        self.msgg = Label(self.cont1, text="Digite também, na ordem apresentada, os valores para cada variável.\n\n Deixe em branco o campo relativo ao valor que quer descobrir.")
+        self.msgg["font"] = ("Arial", 10)
+        self.msgg["pady"] = 10
+        self.msgg.pack()
         
         #variavel de controle para escolher apenas um botão
         self.ver = IntVar()
@@ -102,10 +111,10 @@ class Main:
         self.msg2.pack()
         
         #caixas de entrada
-        self.f = Entry(self.cont3.v)
-        self.f["width"] = 5
-        self.f["font"] = ("Arial", 10)
-        self.f.pack(side=LEFT)
+        self.F = Entry(self.cont3.v)
+        self.F["width"] = 5
+        self.F["font"] = ("Arial", 10)
+        self.F.pack(side=LEFT)
         self.g = Entry(self.cont3.v)
         self.g["width"] = 5
         self.g["font"] = ("Arial", 10)
@@ -139,10 +148,10 @@ class Main:
         self.m["width"] = 5
         self.m["font"] = ("Arial", 10)
         self.m.pack(side=LEFT)
-        self.c = Entry(self.cont4.v)
-        self.c["width"] = 5
-        self.c["font"] = ("Arial", 10)
-        self.c.pack(side=LEFT)
+        self.co = Entry(self.cont4.v)
+        self.co["width"] = 5
+        self.co["font"] = ("Arial", 10)
+        self.co.pack(side=LEFT)
         
         #botao 4 - caos
         self.f4 = Radiobutton(self.cont5, variable=self.ver, value=4)
@@ -173,10 +182,10 @@ class Main:
         self.msg5.pack()
         
         #caixas de entrada
-        self.p = Entry(self.cont6.v)
-        self.p["width"] = 5
-        self.p["font"] = ("Arial", 10)
-        self.p.pack(side=LEFT)
+        self.pr = Entry(self.cont6.v)
+        self.pr["width"] = 5
+        self.pr["font"] = ("Arial", 10)
+        self.pr.pack(side=LEFT)
         self.v = Entry(self.cont6.v)
         self.v["width"] = 5
         self.v["font"] = ("Arial", 10)
@@ -209,10 +218,10 @@ class Main:
         self.v0["width"] = 5
         self.v0["font"] = ("Arial", 10)
         self.v0.pack(side=LEFT)
-        self.a = Entry(self.cont7.v)
-        self.a["width"] = 5
-        self.a["font"] = ("Arial", 10)
-        self.a.pack(side=LEFT)
+        self.ac = Entry(self.cont7.v)
+        self.ac["width"] = 5
+        self.ac["font"] = ("Arial", 10)
+        self.ac.pack(side=LEFT)
         self.s = Entry(self.cont7.v)
         self.s["width"] = 5
         self.s["font"] = ("Arial", 10)
@@ -241,17 +250,17 @@ class Main:
         #botao 8 - força sobre partícula
         self.f8 = Radiobutton(self.cont9, variable=self.ver, value=8)
         self.f8.pack(side=LEFT)
-        self.msg8 = Label(self.cont9, text=("F = B " + ponto() + " i " + ponto() + " l " + ponto() + "sen(" + theta() +")"))
+        self.msg8 = Label(self.cont9, text=("F = B " + ponto() + " i " + ponto() + " l " + ponto() + " sen(" + theta() +")"))
         self.msg8.pack()
         
-        self.f = Entry(self.cont9.v)
-        self.f["width"] = 5
-        self.f["font"] = ("Arial", 10)
-        self.f.pack(side=LEFT)
-        self.b = Entry(self.cont9.v)
-        self.b["width"] = 5
-        self.b["font"] = ("Arial", 10)
-        self.b.pack(side=LEFT)
+        self.fm = Entry(self.cont9.v)
+        self.fm["width"] = 5
+        self.fm["font"] = ("Arial", 10)
+        self.fm.pack(side=LEFT)
+        self.B = Entry(self.cont9.v)
+        self.B["width"] = 5
+        self.B["font"] = ("Arial", 10)
+        self.B.pack(side=LEFT)
         self.i = Entry(self.cont9.v)
         self.i["width"] = 5
         self.i["font"] = ("Arial", 10)
@@ -280,6 +289,8 @@ class Main:
         self.sair["command"] = self.contU.quit
         self.sair.pack(side=BOTTOM)
 
-root = Tk()
-Main(root)
-root.mainloop()
+myApp = Main()
+
+myApp.master.title("Resolvedor de Funções")
+
+myApp.mainloop()
